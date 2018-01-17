@@ -22,14 +22,15 @@ sudo rm -f /etc/apt/sources.list.d/ondrej-php-7_0-trusty.list
 
 status "Upgrading vagrant box paliarush/magento2.ubuntu v1.1.0"
 if [[ ${use_php7} -eq 1 ]]; then
-    if /usr/bin/php7.0 -v | grep -q '7.0.5' ; then
+    if /usr/bin/php -v | grep -q '7.0.5' ; then
         status "Upgrading PHP 7.0.5"
         apt-get update 2> >(logError) > >(log)
         a2dismod php7.0 2> >(logError) > >(log)
         rm -rf /etc/php/7.0/apache2
         export DEBIAN_FRONTEND=noninteractive
-        apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install php7.0 php7.0-mcrypt php7.0-curl php7.0-cli php7.0-mysql php7.0-gd php7.0-intl php7.0-xsl php7.0-bcmath php7.0-mbstring php7.0-soap php7.0-zip libapache2-mod-php7.0 2> >(logError) > >(log)
-        a2enmod php7.0 2> >(logError) > >(log)
+        apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install php7.1 php7.1-mcrypt php7.1-curl php7.1-cli php7.1-mysql php7.1-gd php7.1-intl php7.1-xsl php7.1-bcmath php7.1-mbstring php7.1-soap php7.1-zip libapache2-mod-php7.1 2> >(logError) > >(log)
+        a2enmod php7.1 2> >(logError) > >(log)
+        update-alternatives --set php /usr/bin/php7.1
 
         status "Installing XDebug"
         cd /usr/lib
@@ -41,8 +42,8 @@ if [[ ${use_php7} -eq 1 ]]; then
         make 2> >(logError) > >(log)
         make install 2> >(logError) > >(log)
 
-        rm -rf /etc/php/7.0/apache2
-        ln -s /etc/php/7.0/cli /etc/php/7.0/apache2
+        rm -rf /etc/php/7.1/apache2
+        ln -s /etc/php/7.1/cli /etc/php/7.1/apache2
 
         status "Restarting Apache"
         service apache2 restart 2> >(logError) > >(log)
