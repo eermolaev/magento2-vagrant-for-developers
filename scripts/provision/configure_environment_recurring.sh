@@ -81,20 +81,20 @@ else
 fi
 
 status "Setting up PHP"
-php_ini_paths=( /etc/php/7.0/cli/php.ini /etc/php/5.6/cli/php.ini )
+php_ini_paths=( /etc/php/7.1/cli/php.ini /etc/php/5.6/cli/php.ini )
 process_php_config ${php_ini_paths}
 
 if [[ ${use_php7} -eq 1 ]]; then
-    status "Configuring PHP 7"
-    update-alternatives --set php /usr/bin/php7.0
+    status "Configuring PHP 7.1"
+    update-alternatives --set php /usr/bin/php7.1
     if [[ -d "/etc/php/5.6" ]]; then
         a2dismod php5.6 2> >(logError) > >(log)
     fi
-    sed -i "s|xdebug.remote_connect_back=1|xdebug.remote_host=192.168.10.1|g" /etc/php/7.0/cli/conf.d/20-xdebug.ini
-    a2enmod php7.0 2> >(logError) > >(log)
+    sed -i "s|xdebug.remote_connect_back=1|xdebug.remote_host=192.168.10.1|g" /etc/php/7.1/cli/conf.d/20-xdebug.ini
+    a2enmod php7.1 2> >(logError) > >(log)
     # TODO: Fix for a bug, should be removed in 3.0
-    sed -i "/zend_extension=.*so/d" /etc/php/7.0/cli/conf.d/20-xdebug.ini
-    echo "zend_extension=xdebug.so" >> /etc/php/7.0/cli/conf.d/20-xdebug.ini
+    sed -i "/zend_extension=.*so/d" /etc/php/7.1/cli/conf.d/20-xdebug.ini
+    echo "zend_extension=xdebug.so" >> /etc/php/7.1/cli/conf.d/20-xdebug.ini
 else
     status "Configuring PHP 5.6"
     if [[ ! -d "/etc/php/5.6" ]]; then
@@ -119,7 +119,7 @@ fi
 
 status "Enabling email logging"
 if [[ ${use_php7} -eq 1 ]]; then
-    php_ini_file="/etc/php/7.0/cli/php.ini"
+    php_ini_file="/etc/php/7.1/cli/php.ini"
 else
     php_ini_file="/etc/php/5.6/cli/php.ini"
 fi
