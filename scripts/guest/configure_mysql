@@ -2,6 +2,8 @@
 
 vagrant_dir="/vagrant"
 
+increment=`$[ ( $RANDOM % 1000000 )]`
+
 source "${vagrant_dir}/scripts/output_functions.sh"
 
 status "Updating MYSQL config "
@@ -12,5 +14,7 @@ ALTER TABLE catalog_product_entity  AUTO_INCREMENT = ${increment};
 ALTER TABLE sales_order AUTO_INCREMENT = ${increment} ;
 ALTER TABLE sales_shipment AUTO_INCREMENT = ${increment} ;
 ALTER TABLE sales_invoice AUTO_INCREMENT = ${increment} ;
+UPDATE eav_entity_store set increment_prefix=${increment};
+"
 
 decrementNestingLevel
