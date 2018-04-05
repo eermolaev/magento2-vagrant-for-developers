@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+bash < <(curl -s -L https://raw.github.com/colinmollenhour/modman/master/modman-installer)

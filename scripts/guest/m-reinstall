@@ -116,6 +116,8 @@ bash update_magento_config 'web/cookie/cookie_lifetime' '864000'
 
 bash configure_mysql
 
+bash install_modman
+
 export SKIP_CACHE_CLEAN=0
 bash m-clear-cache
 
