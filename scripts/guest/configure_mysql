@@ -2,7 +2,7 @@
 
 vagrant_dir="/vagrant"
 
-increment=`$[ ( $RANDOM % 1000000 )]`
+increment=$[ ( $RANDOM % 1000000 )]
 
 source "${vagrant_dir}/scripts/output_functions.sh"
 
