@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+vagrant_dir="/vagrant"
+
+source "${vagrant_dir}/scripts/output_functions.sh"
+
+status "Updating MYSQL config "
+incrementNestingLevel
+
+mysql -D magento -e "ALTER TABLE customer_entity  AUTO_INCREMENT = ${increment};
+ALTER TABLE catalog_product_entity  AUTO_INCREMENT = ${increment};
+ALTER TABLE sales_order AUTO_INCREMENT = ${increment} ;
+ALTER TABLE sales_shipment AUTO_INCREMENT = ${increment} ;
+ALTER TABLE sales_invoice AUTO_INCREMENT = ${increment} ;
+
+decrementNestingLevel

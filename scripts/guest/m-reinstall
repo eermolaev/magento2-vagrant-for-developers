@@ -114,6 +114,8 @@ bash change_magento_config_for_functional_tests
 bash update_magento_config 'admin/security/session_lifetime' '864000'
 bash update_magento_config 'web/cookie/cookie_lifetime' '864000'
 
+bash configure_mysql
+
 export SKIP_CACHE_CLEAN=0
 bash m-clear-cache
 
