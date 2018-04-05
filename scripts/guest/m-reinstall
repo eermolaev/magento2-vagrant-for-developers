@@ -106,6 +106,8 @@ if [[ ${is_windows_host} == 1 ]] || [[ ${use_nfs} == 0 ]]; then
     sudo chown -R vagrant:vagrant ${MAGENTO_ROOT}
 fi
 
+bash configure_mysql
+
 if [[ ${generate_basic_data} != 0 ]]; then
     bash generate_basic_data
 fi
@@ -114,7 +116,6 @@ bash change_magento_config_for_functional_tests
 bash update_magento_config 'admin/security/session_lifetime' '864000'
 bash update_magento_config 'web/cookie/cookie_lifetime' '864000'
 
-bash configure_mysql
 
 bash install_modman
 
