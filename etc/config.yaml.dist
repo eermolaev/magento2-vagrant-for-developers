@@ -56,7 +56,7 @@ magento:
   timezone: "America/Chicago"
   currency: "USD"
   admin_user: "admin"
-  admin_password: "123123q"
+  admin_password: "admin123"
   # [Changes applied on m-clear-cache] Available options: developer, production, default
   mode: "developer"
 
