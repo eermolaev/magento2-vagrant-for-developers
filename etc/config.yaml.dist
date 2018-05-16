@@ -5,6 +5,7 @@ composer_project:
   # Current section used only if 'checkout_source_from' is set to 'composer'
 
   # [To apply changes: init_project.sh -fc]
+  # Custom version can be provided by using '={version}' appended to repo name. E.g. name: "magento/project-community-edition=2.2.0". Otherwise, default version is used
   name: "magento/project-community-edition"
   # Make sure to specify valid keys for this repository in etc/composer/auth.json
   url: "https://repo.magento.com"
@@ -33,8 +34,8 @@ guest:
   forwarded_ssh_port: 3000
 
 environment:
-  # [To apply changes: vagrant reload] If set to 0, PHP 5 will be installed.
-  use_php7: 1
+  # [To apply changes: vagrant reload] Valid versions: 5.6, 7.0, 7.1, 7.2
+  php_version: "7.0"
   composer_prefer_source: 0
   # [To apply changes: m-reinstall OR m-varnish enable/disable]
   use_varnish: 0
