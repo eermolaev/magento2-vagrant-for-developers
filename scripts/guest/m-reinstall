@@ -18,6 +18,7 @@ setupOptions[currency]="$(bash ${get_config_value} "magento_currency")"
 setupOptions[admin_user]="$(bash ${get_config_value} "magento_admin_user")"
 setupOptions[admin_password]="$(bash ${get_config_value} "magento_admin_password")"
 setupOptions[db_host]='localhost'
+setupOptions[db_prefix]='tnw'
 setupOptions[db_name]='magento'
 setupOptions[db_user]='root'
 setupOptions[base_url]="http://${magento_host_name}/"
@@ -61,6 +62,7 @@ cd ${MAGENTO_ROOT}
 
 install_cmd="./bin/magento setup:install \
     --db-host=${setupOptions[db_host]} \
+    --db-prefix=${setupOptions[db_prefix]} \
     --db-name=${setupOptions[db_name]} \
     --db-user=${setupOptions[db_user]} \
     --backend-frontname=${setupOptions[admin_frontname]} \
