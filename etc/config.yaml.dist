@@ -1,5 +1,5 @@
 # [To apply changes: init_project.sh -fc] Possible values: git, composer
-checkout_source_from: "git"
+checkout_source_from: "composer"
 
 composer_project:
   # Current section used only if 'checkout_source_from' is set to 'composer'
@@ -35,7 +35,7 @@ guest:
 
 environment:
   # [To apply changes: vagrant reload] Valid versions: 5.6, 7.0, 7.1, 7.2
-  php_version: "7.0"
+  php_version: "7.1"
   composer_prefer_source: 0
   # [To apply changes: m-reinstall OR m-varnish enable/disable]
   use_varnish: 0
