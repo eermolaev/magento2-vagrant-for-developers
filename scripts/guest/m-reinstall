@@ -62,7 +62,6 @@ cd ${MAGENTO_ROOT}
 
 install_cmd="./bin/magento setup:install \
     --db-host=${setupOptions[db_host]} \
-    --db-prefix='${setupOptions[db_prefix]}' \
     --db-name=${setupOptions[db_name]} \
     --db-user=${setupOptions[db_user]} \
     --backend-frontname=${setupOptions[admin_frontname]} \
